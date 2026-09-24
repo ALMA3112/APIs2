@@ -66,64 +66,64 @@ de esa instancia, copiado sin editar como `provenance/sagemaker-resource-metadat
 en cada run experimental y en el run final.
 
 ## Estructura del repositorio
-app/ Código de la API FastAPI
-config.py Configuración (variables de entorno)
-mlflow_gateway.py Acceso a MLflow (runs, artefactos, modelo)
-validation.py Reglas de validez del Anexo A
-schemas.py Modelos de respuesta
-main.py Aplicación FastAPI
-routers/
-predict.py POST /api/v1/predict
-health.py GET /health
-audit.py GET /audit/*
-serving/ Código que se empaqueta DENTRO del modelo registrado
-text_pipeline.py Preprocesamiento (limpieza base + normalización de alargamientos)
-model_wrapper.py Wrapper pyfunc: recibe texto crudo, devuelve la etiqueta
-common.py Utilidades compartidas (dataset, folds, métricas)
-step1_protocol.py Run de protocolo
-step2_t0.py T0
-step3_b0.py B0
-step4_preprocessing.py P_STOPWORDS, P_STOPWORDS_NEGATION, P_LEMMA, P_ELONGATION, P_EMOJI
-step5_representation.py R_BOW, R_TFIDF_UNI, R_TFIDF_UNI_BI, R_SPACY
-step6_classifier.py C_LOGREG, C_LINEAR_SVM, C_SGD
-step7_ablation.py Ablación del pipeline candidato
-step8_final.py Reentrenamiento final y registro como champion
-step9_error_analysis.py Análisis de errores
-step10_attach_reports.py Adjunta reports/ al run final
-notebooks/
-experiment_audit.ipynb Notebook de apoyo para la sustentación (Sección 8)
-reports/
-error_analysis.csv 20 errores del modelo final, categorizados
-error_analysis.md Frecuencia por categoría e interpretación
-app/ Código de la API FastAPI
-config.py Configuración (variables de entorno)
-mlflow_gateway.py Acceso a MLflow (runs, artefactos, modelo)
-validation.py Reglas de validez del Anexo A
-schemas.py Modelos de respuesta
-main.py Aplicación FastAPI
-routers/
-predict.py POST /api/v1/predict
-health.py GET /health
-audit.py GET /audit/*
-serving/ Código que se empaqueta DENTRO del modelo registrado
-text_pipeline.py Preprocesamiento (limpieza base + normalización de alargamientos)
-model_wrapper.py Wrapper pyfunc: recibe texto crudo, devuelve la etiqueta
-common.py Utilidades compartidas (dataset, folds, métricas)
-step1_protocol.py Run de protocolo
-step2_t0.py T0
-step3_b0.py B0
-step4_preprocessing.py P_STOPWORDS, P_STOPWORDS_NEGATION, P_LEMMA, P_ELONGATION, P_EMOJI
-step5_representation.py R_BOW, R_TFIDF_UNI, R_TFIDF_UNI_BI, R_SPACY
-step6_classifier.py C_LOGREG, C_LINEAR_SVM, C_SGD
-step7_ablation.py Ablación del pipeline candidato
-step8_final.py Reentrenamiento final y registro como champion
-step9_error_analysis.py Análisis de errores
-step10_attach_reports.py Adjunta reports/ al run final
-notebooks/
-experiment_audit.ipynb Notebook de apoyo para la sustentación (Sección 8)
-reports/
-error_analysis.csv 20 errores del modelo final, categorizados
-error_analysis.md Frecuencia por categoría e interpretación
+- app/ Código de la API FastAPI
+- config.py Configuración (variables de entorno)
+- mlflow_gateway.py Acceso a MLflow (runs, artefactos, modelo)
+- validation.py Reglas de validez del Anexo A
+- schemas.py Modelos de respuesta
+- main.py Aplicación FastAPI
+- routers/
+- predict.py POST /api/v1/predict
+- health.py GET /health
+- audit.py GET /audit/*
+- serving/ Código que se empaqueta DENTRO del modelo registrado
+- text_pipeline.py Preprocesamiento (limpieza base + normalización de alargamientos)
+- model_wrapper.py Wrapper pyfunc: recibe texto crudo, devuelve la etiqueta
+- common.py Utilidades compartidas (dataset, folds, métricas)
+- step1_protocol.py Run de protocolo
+- step2_t0.py T0
+- step3_b0.py B0
+- step4_preprocessing.py P_STOPWORDS, P_STOPWORDS_NEGATION, P_LEMMA, P_ELONGATION, P_EMOJI
+- step5_representation.py R_BOW, R_TFIDF_UNI, R_TFIDF_UNI_BI, R_SPACY
+- step6_classifier.py C_LOGREG, C_LINEAR_SVM, C_SGD
+- step7_ablation.py Ablación del pipeline candidato
+- step8_final.py Reentrenamiento final y registro como champion
+- step9_error_analysis.py Análisis de errores
+- step10_attach_reports.py Adjunta reports/ al run final
+- notebooks/
+- experiment_audit.ipynb Notebook de apoyo para la sustentación (Sección 8)
+- reports/
+- error_analysis.csv 20 errores del modelo final, categorizados
+- error_analysis.md Frecuencia por categoría e interpretación
+- app/ Código de la API FastAPI
+- config.py Configuración (variables de entorno)
+- mlflow_gateway.py Acceso a MLflow (runs, artefactos, modelo)
+- validation.py Reglas de validez del Anexo A
+- schemas.py Modelos de respuesta
+- main.py Aplicación FastAPI
+- routers/
+- predict.py POST /api/v1/predict
+- health.py GET /health
+- audit.py GET /audit/*
+- serving/ Código que se empaqueta DENTRO del modelo registrado
+- text_pipeline.py Preprocesamiento (limpieza base + normalización de alargamientos)
+- model_wrapper.py Wrapper pyfunc: recibe texto crudo, devuelve la etiqueta
+- common.py Utilidades compartidas (dataset, folds, métricas)
+- step1_protocol.py Run de protocolo
+- step2_t0.py T0
+- step3_b0.py B0
+- step4_preprocessing.py P_STOPWORDS, P_STOPWORDS_NEGATION, P_LEMMA, P_ELONGATION, P_EMOJI
+- step5_representation.py R_BOW, R_TFIDF_UNI, R_TFIDF_UNI_BI, R_SPACY
+- step6_classifier.py C_LOGREG, C_LINEAR_SVM, C_SGD
+- step7_ablation.py Ablación del pipeline candidato
+- step8_final.py Reentrenamiento final y registro como champion
+- step9_error_analysis.py Análisis de errores
+- step10_attach_reports.py Adjunta reports/ al run final
+- notebooks/
+- experiment_audit.ipynb Notebook de apoyo para la sustentación (Sección 8)
+- reports/
+- error_analysis.csv 20 errores del modelo final, categorizados
+- error_analysis.md Frecuencia por categoría e interpretación
 
 
 ## Endpoints de la API
