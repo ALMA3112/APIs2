@@ -1,0 +1,8 @@
+envs/
+*.joblib
+__pycache__/
+.ipynb_checkpoints/
+mlflow_backup/
+artifacts/
+protocol/
+reports/*.log
