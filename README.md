@@ -30,12 +30,12 @@ Curso de Procesamiento de Lenguaje Natural · Universidad Sergio Arboleda · 202
 | **Dataset** | `adilbekovich/Sentiment140Twitter`, revisión `b6037e127257d95b9b23d31f78b264b9ebe697fd` |
 | **Modelo final** | Preprocesamiento de B0 + TF-IDF (unigramas y bigramas) + Logistic Regression |
 | **Macro-F1 en validación cruzada** | 0.79979 (3 folds, 200.000 registros) |
-| **Macro-F1 en `test`** | **0.8255** (evaluado una sola vez, 240.000 registros) |
+| **Macro-F1 en `test`** | **0.8255** (240.000 registros; ver la nota en *Limitaciones y notas*) |
 | **Entrenamiento final** | 1.360.000 registros (`train` completo) |
 | **Registro** | `sentiment140@champion` (versión 1) |
 | **Versiones clave** | scikit-learn 1.5.2 · MLflow 3.17.0 |
 
-El flujo seguido fue: referencias (T0, B0) → comparaciones de preprocesamiento → comparaciones de representación → comparaciones de clasificador → pipeline candidato → ablación → reentrenamiento con todo `train` → evaluación única en `test` → análisis de errores → registro y despliegue.
+El flujo seguido fue: referencias (T0, B0) → comparaciones de preprocesamiento → comparaciones de representación → comparaciones de clasificador → pipeline candidato → ablación → reentrenamiento con todo `train` → evaluación en `test` → análisis de errores → registro y despliegue.
 
 ## Direcciones y entregables
 
@@ -179,7 +179,7 @@ texto crudo
 |---|---|
 | Biblioteca | scikit-learn 1.5.2 |
 | Entrenamiento | 1.360.000 registros (todo `train`) |
-| Evaluación | 240.000 registros de `test`, una sola vez |
+| Evaluación | 240.000 registros de `test` (ver nota en *Limitaciones y notas*) |
 | Macro-F1 en `test` | 0.8255187 |
 | Errores en `test` | 41.875 de 240.000 |
 
@@ -377,6 +377,7 @@ Contribución individual (`GET /audit/contributions`): 11 configuraciones válid
 ## Limitaciones y notas
 
 - **Scripts de experimentos.** Los scripts originales de las comparaciones `P_*`, `R_SPACY`, `C_*` y de la ablación estaban en una carpeta fuera de `~/SageMaker` y se perdieron cuando el Notebook Instance se reinició. Su evidencia (métricas por fold, configuración efectiva y procedencia) permanece íntegra en MLflow. Para `B0` y el candidato, el código se reescribió en `src/reproduce.py` y reproduce los Macro-F1 registrados con diferencia máxima de 0.
+- **Evaluación en `test`.** El modelo final se evaluó en `test` una primera vez. Al perderse los archivos locales por el reinicio del notebook, el entrenamiento final se repitió para regenerar el modelo y la muestra de errores. Ambas ejecuciones dieron exactamente el mismo Macro-F1 (0.8255187213071261); la configuración no se modificó en ningún momento a partir de ese resultado y se eligió solo con validación cruzada.
 - **Python.** El modelo se entrenó con Python 3.11 y la API corre con Python 3.12; las versiones de scikit-learn, NumPy y SciPy son idénticas y las predicciones coinciden.
 - **Ruido de etiquetas.** Sentiment140 se etiquetó automáticamente a partir de emoticonos, lo que impone un techo al rendimiento y explica parte de los errores.
 - **Alcance del análisis de errores.** La muestra es de 40 casos, por lo que las frecuencias son indicativas y la asignación a una categoría implica criterio humano.

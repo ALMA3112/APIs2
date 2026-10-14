@@ -2,7 +2,7 @@ import re, os, pandas as pd, mlflow
 from mlflow.tracking import MlflowClient
 from datasets import load_dataset
 
-URI = os.environ.get("MLFLOW_TRACKING_URI", "http://34.230.57.243:5000")
+URI = os.environ.get("MLFLOW_TRACKING_URI", "http://34.228.215.204:5000")
 EXPERIMENT = "nlp-lab2-sentiment140"
 DATASET = "adilbekovich/Sentiment140Twitter"
 REV = "b6037e127257d95b9b23d31f78b264b9ebe697fd"

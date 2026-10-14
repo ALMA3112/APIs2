@@ -1,6 +1,6 @@
 import json, numpy as np, pandas as pd, mlflow
 from mlflow.tracking import MlflowClient
-mlflow.set_tracking_uri("http://34.230.57.243:5000")
+mlflow.set_tracking_uri("http://34.228.215.204:5000")
 c = MlflowClient()
 exp = c.get_experiment_by_name("nlp-lab2-sentiment140")
 runs = c.search_runs([exp.experiment_id], max_results=1000)

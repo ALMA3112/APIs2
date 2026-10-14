@@ -7,7 +7,7 @@ md("# Auditoría del experimento: Sentiment140\nReconstruye desde el MLflow Trac
 code('''import os, json, numpy as np, pandas as pd, mlflow
 from IPython.display import display
 from mlflow.tracking import MlflowClient
-URI = os.environ.get("MLFLOW_TRACKING_URI", "http://34.230.57.243:5000")
+URI = os.environ.get("MLFLOW_TRACKING_URI", "http://34.228.215.204:5000")
 mlflow.set_tracking_uri(URI); c = MlflowClient()
 exp = c.get_experiment_by_name("nlp-lab2-sentiment140")
 runs = [r for r in c.search_runs([exp.experiment_id], max_results=1000) if r.data.tags.get("lab_run_type")]
@@ -78,7 +78,7 @@ prov = json.load(open(dl(fin.info.run_id, "provenance/sagemaker-resource-metadat
 print("ResourceArn == notebook_arn:", prov["ResourceArn"] == ft["notebook_arn"], "|", ft["notebook_arn"])''')
 md("## 7. API desplegada (opcional)\nCompara lo que responde la API con lo que muestra MLflow.")
 code('''import requests
-API = os.environ.get("API_URL", "http://34.230.57.243:8000")
+API = os.environ.get("API_URL", "http://34.228.215.204:8000")
 try:
     h = requests.get(API + "/health", timeout=10).json(); m = requests.get(API + "/audit/model", timeout=60).json()
     p = requests.post(API + "/api/v1/predict", json={"text": ["i loved it", "worst day ever"]}, timeout=30).json()
